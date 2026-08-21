@@ -160,7 +160,7 @@ export default function App() {
           key={era}
           videos={[era]}
           audioReady={audioReady}
-          pular={era !== 'ps3'}
+          pular={false}
           preencher={era === 'ps3'}
           onGesto={onAudioReady}
           onFim={entrarNaEra}
