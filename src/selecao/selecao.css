@@ -1,0 +1,816 @@
+/* ---------------- os canais flutuando sobre a sala ----------------
+   a televisão da era fica apagada, então a identificação do canal e a
+   faixa não podem viver dentro do tubo: elas ficam por cima da cena  */
+
+.canais {
+  position: absolute;
+  inset: 0;
+  z-index: 42;
+  pointer-events: none;
+  font-family: 'Saira', 'Segoe UI', sans-serif;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.canais.surgiu {
+  opacity: 1;
+}
+
+.canais.trocando .canais-placa {
+  animation: canais-troca 0.32s ease-out;
+}
+
+@keyframes canais-troca {
+  0% {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- a placa de identificação --- */
+
+.canais-placa {
+  position: absolute;
+  left: 46px;
+  top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 13px 20px 14px;
+  border-radius: 4px;
+  border-left: 3px solid var(--cor);
+  background: rgba(6, 9, 12, 0.62);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.5);
+}
+
+.canais-num {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  color: var(--cor);
+}
+
+.canais-placa b {
+  font-size: 21px;
+  font-weight: 300;
+  letter-spacing: 1.4px;
+  line-height: 1.1;
+  color: #f4f9fc;
+}
+
+.canais-placa em {
+  font-style: normal;
+  font-size: 10.5px;
+  font-weight: 300;
+  letter-spacing: 0.6px;
+  color: rgba(210, 228, 240, 0.58);
+}
+
+/* --- a faixa vai para o alto à direita: a base da tela pertence ao
+       console, e no Atari ele fica justamente no centro de baixo --- */
+
+.canais-faixa {
+  position: absolute;
+  right: 46px;
+  top: 44px;
+  display: flex;
+  gap: 8px;
+  list-style: none;
+  pointer-events: auto;
+}
+
+.canais-faixa button {
+  width: 44px;
+  padding: 7px 0;
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.6px;
+  border-radius: 3px;
+  color: rgba(220, 236, 246, 0.5);
+  background: rgba(6, 9, 12, 0.6);
+  border: 1px solid rgba(180, 210, 230, 0.2);
+  backdrop-filter: blur(6px);
+  transition: color 0.18s, background 0.18s, border-color 0.18s;
+}
+
+.canais-faixa button:hover {
+  color: #eaf5fb;
+  border-color: rgba(180, 210, 230, 0.45);
+}
+
+.canais-faixa button.on {
+  color: #061218;
+  background: #dfeaf1;
+  border-color: #dfeaf1;
+}
+
+.canais-dica {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 26px;
+  text-align: center;
+  font-size: 9.5px;
+  font-weight: 300;
+  letter-spacing: 2.4px;
+  text-transform: uppercase;
+  color: rgba(214, 230, 242, 0.42);
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.85);
+}
+
+/* --- canal 00: a casa. é a primeira coisa que alguém vê, então
+       poucas palavras, uma ação e o eixo do tempo carregando a ideia --- */
+
+.hoje {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 28px 46px 26px;
+  background:
+    linear-gradient(90deg, rgba(90, 208, 230, 0.04) 1px, transparent 1px),
+    radial-gradient(ellipse 76% 82% at 15% 12%, rgba(90, 208, 230, 0.11) 0%, transparent 62%),
+    linear-gradient(186deg, #172027 0%, #0b1014 56%, #06090b 100%);
+  background-size: 42px 100%, auto, auto;
+  font-family: 'Saira', 'Segoe UI', sans-serif;
+  color: #e9eef3;
+}
+
+.hoje-topo {
+  flex: none;
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  font-size: 10.5px;
+  font-weight: 300;
+  letter-spacing: 0.4px;
+  color: rgba(190, 210, 226, 0.45);
+}
+
+.hoje-sinal {
+  color: #5ad0e6;
+  font-size: 9px;
+  letter-spacing: 1.8px;
+}
+
+.hoje-topo b {
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  color: rgba(238, 246, 251, 0.9);
+}
+
+.hoje-fim {
+  margin-left: auto;
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.hoje-fim em {
+  font-style: normal;
+  font-size: 12px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  color: #cfe4ee;
+}
+
+/* --- a chamada --- */
+
+.hoje-fala {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 0;
+  max-width: 560px;
+  padding-bottom: 16px;
+}
+
+.hoje-identidade {
+  margin-bottom: 12px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 2.2px;
+  text-transform: uppercase;
+  color: #5ad0e6;
+}
+
+.hoje-fala h1 {
+  font-size: 46px;
+  font-weight: 600;
+  line-height: 1.02;
+  letter-spacing: 0;
+  color: #fbfdfe;
+}
+
+.hoje-fala h1 span {
+  display: inline;
+  color: #5ad0e6;
+}
+
+.hoje-subtitulo {
+  margin-top: 14px;
+  font-size: 13px;
+  font-weight: 300;
+  letter-spacing: 0.2px;
+  color: rgba(206, 222, 234, 0.72);
+}
+
+/* --- ações: uma preenchida, o resto em texto --- */
+
+.hoje-acoes {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 15px;
+  margin-top: 25px;
+}
+
+.hoje-links {
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
+}
+
+.hoje-principal {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 20px 11px 17px;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  border-radius: 2px;
+  border: 1px solid rgba(120, 210, 232, 0.34);
+  background: rgba(90, 208, 230, 0.1);
+  color: #dff5fb;
+  cursor: pointer;
+  transition: background 0.16s, border-color 0.16s, color 0.16s, transform 0.16s;
+}
+
+.hoje-principal i {
+  width: 0;
+  height: 0;
+  border-left: 9px solid currentColor;
+  border-top: 5.5px solid transparent;
+  border-bottom: 5.5px solid transparent;
+}
+
+.hoje-principal.on {
+  border-color: #5ad0e6;
+  background: #5ad0e6;
+  color: #061218;
+}
+
+.hoje-link {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 400;
+  text-decoration: none;
+  color: rgba(196, 216, 230, 0.6);
+  border-bottom: 1px solid transparent;
+  transition: color 0.16s, border-color 0.16s;
+}
+
+.hoje-link i {
+  font-style: normal;
+  font-size: 9px;
+  opacity: 0.6;
+}
+
+.hoje-link.on {
+  color: #7fe3f5;
+  border-bottom-color: rgba(127, 227, 245, 0.6);
+}
+
+/* --- o eixo do tempo: cinco marcas em vez de um parágrafo --- */
+
+.hoje-eixo {
+  flex: none;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: flex-start;
+  margin: 0 0 15px;
+  padding-top: 17px;
+  opacity: 1;
+  visibility: visible;
+}
+
+.hoje-eixo::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 4px;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    rgba(150, 180, 200, 0.1) 0%,
+    rgba(150, 180, 200, 0.28) 24%,
+    rgba(90, 208, 230, 0.55) 100%
+  );
+}
+
+.hoje-eixo button,
+.hoje-eixo-agora {
+  flex: 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  padding: 0;
+  font-family: inherit;
+  text-align: left;
+  background: none;
+  border: none;
+  opacity: 1;
+  visibility: visible;
+}
+
+.hoje-eixo button {
+  cursor: pointer;
+}
+
+.hoje-eixo i {
+  position: absolute;
+  top: -17px;
+  left: 0;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #0b1014;
+  box-shadow: inset 0 0 0 1.5px var(--marca, rgba(160, 190, 210, 0.5));
+  transition: box-shadow 0.18s, transform 0.18s;
+}
+
+.hoje-eixo button:nth-child(1) {
+  --marca: #d4832c;
+}
+.hoje-eixo button:nth-child(2) {
+  --marca: #46d95a;
+}
+.hoje-eixo button:nth-child(3) {
+  --marca: #ffc24d;
+}
+.hoje-eixo button:nth-child(4) {
+  --marca: #dcdcdc;
+}
+
+.hoje-eixo b {
+  font-size: 14px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.4px;
+  color: rgba(226, 238, 246, 0.72);
+  transition: color 0.18s;
+}
+
+.hoje-eixo em {
+  font-style: normal;
+  font-size: 9px;
+  font-weight: 300;
+  letter-spacing: 0.2px;
+  color: rgba(184, 204, 220, 0.42);
+  transition: color 0.18s;
+}
+
+.hoje-eixo button:hover i {
+  background: var(--marca);
+  box-shadow: inset 0 0 0 1.5px var(--marca), 0 0 12px var(--marca);
+  transform: scale(1.2);
+}
+
+.hoje-eixo button:hover b {
+  color: #fff;
+}
+
+.hoje-eixo button:hover em {
+  color: rgba(226, 240, 250, 0.75);
+}
+
+.hoje-eixo-agora {
+  flex: 0 0 auto;
+  min-width: 92px;
+}
+
+.hoje-eixo-agora i {
+  background: #5ad0e6;
+  box-shadow: 0 0 0 3px rgba(90, 208, 230, 0.18), 0 0 16px rgba(90, 208, 230, 0.7);
+}
+
+.hoje-eixo-agora b {
+  color: #eaf8fc;
+}
+
+.hoje-eixo-agora em {
+  color: rgba(127, 227, 245, 0.62);
+}
+
+.hoje-aviso {
+  flex: none;
+  font-size: 6.5px;
+  font-weight: 300;
+  line-height: 1.5;
+  color: rgba(170, 190, 206, 0.26);
+}
+
+/* ---------------- abertura em vídeo ---------------- */
+
+.intro {
+  position: absolute;
+  inset: 0;
+  z-index: 500;
+  display: grid;
+  place-items: center;
+  background: #000;
+  cursor: pointer;
+}
+
+.intro-video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #000;
+}
+
+/* a abertura do PS3 preenche o vidro: a tela daquela TV é 1,64 e o vídeo é 16:9,
+   então recortar 4% das laterais vale mais que deixar tarja preta em cima e embaixo */
+
+.intro-video.preenche {
+  object-fit: cover;
+  object-position: 78% center;
+}
+
+.intro-skip {
+  position: absolute;
+  right: 14px;
+  bottom: 12px;
+  animation: fadeIn 0.8s 0.6s both;
+  font-family: 'Oswald', sans-serif;
+  font-size: 9px;
+  font-weight: 300;
+  letter-spacing: 2px;
+  color: rgba(255, 255, 255, 0.28);
+}
+
+.intro-gesto {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  font-family: 'Oswald', sans-serif;
+}
+
+.intro-play {
+  width: 0;
+  height: 0;
+  border-left: 24px solid rgba(255, 255, 255, 0.85);
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+  filter: drop-shadow(0 0 18px rgba(255, 255, 255, 0.25));
+}
+
+.intro-gesto p {
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 4px;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.intro-confirma {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(3px);
+  animation: fadeIn 0.16s ease;
+}
+
+.intro-caixa {
+  min-width: 330px;
+  padding: 24px 26px 20px;
+  text-align: center;
+  font-family: 'Oswald', sans-serif;
+  background: linear-gradient(180deg, rgba(18, 24, 34, 0.97), rgba(8, 12, 18, 0.98));
+  border: 1px solid rgba(178, 208, 240, 0.3);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.7);
+  cursor: default;
+}
+
+.intro-pergunta {
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  color: #e6ecf2;
+}
+
+.intro-opcoes {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.intro-opcoes button {
+  flex: 1;
+  padding: 10px 14px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  white-space: nowrap;
+  color: rgba(230, 236, 242, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.03);
+  transition: color 0.16s, border-color 0.16s, background 0.16s;
+}
+
+.intro-opcoes button.on {
+  color: #fff;
+  border-color: rgba(178, 208, 240, 0.7);
+  background: rgba(178, 208, 240, 0.14);
+}
+
+.intro-opcoes button.sim.on {
+  border-color: rgba(224, 108, 92, 0.75);
+  background: rgba(224, 108, 92, 0.16);
+}
+
+/* ---------------- os números com a cara de cada era ----------------
+   cada botão carrega a identidade da SUA era, sempre — não da era em
+   que você está agora. É por isso que a fila inteira não pode herdar
+   estilo de `.canais.epoca-x`: cada .num-* é independente.           */
+
+
+.canais-faixa .num-inicio {
+  border-radius: 999px;
+}
+
+.canais-faixa .num-inicio.on {
+  color: #061218;
+  background: #5ad0e6;
+  border-color: #5ad0e6;
+  box-shadow: 0 3px 16px -2px rgba(90, 208, 230, 0.55);
+}
+
+.canais-faixa .num-atari {
+  width: 40px;
+  font-family: 'Silkscreen', monospace;
+  font-size: 10.5px;
+  letter-spacing: 0;
+  border-radius: 0;
+  border-width: 2px;
+  border-color: rgba(212, 131, 44, 0.32);
+  color: rgba(230, 180, 120, 0.4);
+}
+
+.canais-faixa .num-atari.on {
+  color: #1a1206;
+  background: #d4832c;
+  border-color: #f2ae5e;
+  box-shadow: 0 3px 14px -2px rgba(212, 131, 44, 0.5);
+}
+
+.canais-faixa .num-ps1 {
+  width: 40px;
+  font-family: 'Silkscreen', monospace;
+  font-size: 10px;
+  letter-spacing: 0;
+  border-radius: 0;
+  border-color: #33452f;
+  background: linear-gradient(180deg, rgba(18, 32, 24, 0.7), rgba(6, 12, 9, 0.7));
+  color: rgba(140, 180, 145, 0.4);
+}
+
+.canais-faixa .num-ps1.on {
+  color: #d6f2d8;
+  background: linear-gradient(180deg, rgba(70, 217, 90, 0.3), rgba(20, 60, 28, 0.55));
+  border-color: #46d95a;
+  box-shadow: inset 0 0 12px rgba(70, 217, 90, 0.25);
+}
+
+.canais-faixa .num-ps2 {
+  width: 44px;
+  font-family: 'Saira', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  font-style: italic;
+  letter-spacing: 0.3px;
+  border-radius: 2px;
+  border-color: rgba(226, 236, 248, 0.2);
+  background: linear-gradient(180deg, rgba(210, 224, 240, 0.1), rgba(40, 52, 68, 0.4));
+  color: rgba(226, 236, 248, 0.42);
+}
+
+.canais-faixa .num-ps2.on {
+  color: #1a1204;
+  background: linear-gradient(180deg, #ffe6a8, #ffc24d 55%, #d1922c);
+  border-color: #fff0c8;
+  box-shadow: 0 0 18px rgba(255, 194, 77, 0.4);
+}
+
+.canais-faixa .num-ps3 {
+  width: 42px;
+  font-family: 'Saira', sans-serif;
+  font-weight: 300;
+  letter-spacing: 0.8px;
+  border-radius: 2px;
+  border-color: rgba(244, 244, 244, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(244, 248, 250, 0.42);
+}
+
+.canais-faixa .num-ps3.on {
+  color: #1e1e1e;
+  background: linear-gradient(180deg, #fdfdfd, #d4d4d4);
+  border-color: #fdfdfd;
+  box-shadow: 0 0 18px rgba(255, 255, 255, 0.38);
+}
+
+/* a placa segue sendo a identidade só do canal ativo */
+
+.canais.epoca-atari .canais-placa b {
+  font-family: 'Silkscreen', monospace;
+  font-size: 16px;
+  letter-spacing: 1px;
+}
+
+.canais.epoca-ps1 .canais-placa b {
+  font-family: 'Silkscreen', monospace;
+  font-size: 15px;
+  letter-spacing: 1px;
+}
+
+.canais.epoca-ps2 .canais-placa b {
+  font-style: italic;
+  font-weight: 500;
+}
+
+/* ---------------- abertura em vídeo ---------------- */
+
+.intro {
+  position: absolute;
+  inset: 0;
+  z-index: 500;
+  display: grid;
+  place-items: center;
+  background: #000;
+  cursor: pointer;
+}
+
+.intro-video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #000;
+}
+
+/* a abertura do PS3 preenche o vidro: a tela daquela TV é 1,64 e o vídeo é 16:9,
+   então recortar 4% das laterais vale mais que deixar tarja preta em cima e embaixo */
+
+.intro-video.preenche {
+  object-fit: cover;
+  object-position: 78% center;
+}
+
+.intro-skip {
+  position: absolute;
+  right: 14px;
+  bottom: 12px;
+  animation: fadeIn 0.8s 0.6s both;
+  font-family: 'Oswald', sans-serif;
+  font-size: 9px;
+  font-weight: 300;
+  letter-spacing: 2px;
+  color: rgba(255, 255, 255, 0.28);
+}
+
+.intro-gesto {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  font-family: 'Oswald', sans-serif;
+}
+
+.intro-play {
+  width: 0;
+  height: 0;
+  border-left: 24px solid rgba(255, 255, 255, 0.85);
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+  filter: drop-shadow(0 0 18px rgba(255, 255, 255, 0.25));
+}
+
+.intro-gesto p {
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 4px;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.intro-confirma {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(3px);
+  animation: fadeIn 0.16s ease;
+}
+
+.intro-caixa {
+  min-width: 330px;
+  padding: 24px 26px 20px;
+  text-align: center;
+  font-family: 'Oswald', sans-serif;
+  background: linear-gradient(180deg, rgba(18, 24, 34, 0.97), rgba(8, 12, 18, 0.98));
+  border: 1px solid rgba(178, 208, 240, 0.3);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.7);
+  cursor: default;
+}
+
+.intro-pergunta {
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  color: #e6ecf2;
+}
+
+.intro-opcoes {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.intro-opcoes button {
+  flex: 1;
+  padding: 10px 14px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  white-space: nowrap;
+  color: rgba(230, 236, 242, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.03);
+  transition: color 0.16s, border-color 0.16s, background 0.16s;
+}
+
+.intro-opcoes button.on {
+  color: #fff;
+  border-color: rgba(178, 208, 240, 0.7);
+  background: rgba(178, 208, 240, 0.14);
+}
+
+.intro-opcoes button.sim.on {
+  border-color: rgba(224, 108, 92, 0.75);
+  background: rgba(224, 108, 92, 0.16);
+}
+
+/* ---------------- os números com a cara de cada era ---------------- */
+
+
+
+.canais.epoca-atari .canais-placa {
+  border-left-color: #d4832c;
+  background: rgba(30, 19, 7, 0.82);
+  box-shadow: 0 12px 32px rgba(10, 5, 0, 0.55), inset 0 0 0 1px rgba(242, 174, 94, 0.1);
+}
+
+
+.canais.epoca-ps1 .canais-placa {
+  border-left-color: #46d95a;
+  background: rgba(7, 18, 12, 0.84);
+  box-shadow: 0 12px 32px rgba(0, 8, 2, 0.55), inset 0 0 0 1px rgba(70, 217, 90, 0.12);
+}
+
+
+.canais.epoca-ps2 .canais-placa {
+  border-left-color: #ffc24d;
+  background: linear-gradient(135deg, rgba(31, 36, 43, 0.88), rgba(13, 17, 22, 0.84));
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.58), inset 0 0 0 1px rgba(255, 194, 77, 0.13);
+}
+
+
+.canais.epoca-ps3 .canais-placa {
+  border-left-color: #dcdcdc;
+  background: rgba(22, 24, 26, 0.82);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.58), inset 0 0 0 1px rgba(255, 255, 255, 0.12);
+}
+

@@ -1,0 +1,1328 @@
+/* ---------------- sala em foto ---------------- */
+
+.viewport.com-foto {
+  background: #05070a;
+}
+
+.foto-quadro {
+  position: absolute;
+  overflow: hidden;
+}
+
+.foto-fundo,
+.foto-nitida {
+  position: absolute;
+  inset: 0;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+.foto-fundo {
+  transform: scale(1.035);
+  transform-origin: center;
+}
+
+.foto-quadro::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 62% 54% at 50% 46%, transparent 40%, rgba(0, 0, 0, 0.34) 100%);
+}
+
+.tela {
+  position: absolute;
+  z-index: 10;
+  overflow: hidden;
+  background: #000;
+  box-shadow: inset 0 0 26px rgba(0, 0, 0, 0.85);
+}
+
+.tela.plana {
+  box-shadow: none;
+}
+
+.tela.plana .tela-brilho {
+  box-shadow: none;
+  background: linear-gradient(
+    122deg,
+    rgba(255, 255, 255, 0.035) 0%,
+    rgba(255, 255, 255, 0.012) 12%,
+    transparent 26%,
+    transparent 100%
+  );
+}
+
+.desenho {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  animation: cena-entra 0.5s ease both;
+}
+
+@keyframes cena-entra {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.foto-quadro {
+  animation: cena-entra 0.5s ease both;
+}
+
+.desenho.liso .parede {
+  background: linear-gradient(170deg, #14191f 0%, #070a0d 88%);
+}
+
+.tela .stage {
+  position: absolute;
+  inset: auto;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(var(--stage-scale));
+  transform-origin: center center;
+}
+
+.tela-brilho {
+  position: absolute;
+  inset: 0;
+  z-index: 940;
+  pointer-events: none;
+  background: linear-gradient(
+    122deg,
+    rgba(255, 255, 255, 0.07) 0%,
+    rgba(255, 255, 255, 0.025) 14%,
+    transparent 31%,
+    transparent 100%
+  );
+  box-shadow: inset 0 0 38px rgba(0, 0, 0, 0.55);
+}
+
+/* ---------------- a sala: paletas por época ---------------- */
+
+.viewport.amb-neutro {
+  --parede-a: #2f383f;
+  --parede-b: #0c1013;
+  --luz: rgba(90, 208, 230, 0.3);
+  --gab-a: #40474e;
+  --gab-b: #272d33;
+  --gab-c: #101417;
+  --gab-borda: rgba(255, 255, 255, 0.08);
+  --placa: rgba(190, 205, 218, 0.34);
+  --led: #5ad0e6;
+  --movel-a: #2a3037;
+  --movel-b: #12161a;
+  --tampo: #3a434b;
+  --obj-a: #39424a;
+  --obj-b: #1a1e22;
+  --quadro: linear-gradient(150deg, #2b3a44 0%, #162026 100%);
+}
+
+.viewport.amb-anos70 {
+  --parede-a: #86663a;
+  --parede-b: #2e2211;
+  --luz: rgba(255, 190, 110, 0.32);
+  --gab-a: #96683c;
+  --gab-b: #63401f;
+  --gab-c: #2f1b0b;
+  --gab-borda: rgba(255, 214, 160, 0.16);
+  --placa: rgba(230, 195, 124, 0.55);
+  --led: #e8642f;
+  --movel-a: #55361b;
+  --movel-b: #23150a;
+  --tampo: #6b4523;
+  --obj-a: #714a29;
+  --obj-b: #2b1b0d;
+  --quadro: linear-gradient(150deg, #9a6a2c 0%, #5c3a12 100%);
+}
+
+.viewport.amb-anos90 {
+  --parede-a: #5d6875;
+  --parede-b: #1e242b;
+  --luz: rgba(150, 235, 170, 0.26);
+  --gab-a: #c2bcac;
+  --gab-b: #948e7e;
+  --gab-c: #514d43;
+  --gab-borda: rgba(255, 255, 255, 0.18);
+  --placa: rgba(58, 56, 50, 0.6);
+  --led: #46d95a;
+  --movel-a: #5d6771;
+  --movel-b: #2a3038;
+  --tampo: #76808a;
+  --obj-a: #ada895;
+  --obj-b: #56534a;
+  --quadro: linear-gradient(150deg, #6f7f8d 0%, #313b45 100%);
+}
+
+.viewport.amb-anos2000 {
+  --parede-a: #46515d;
+  --parede-b: #13171c;
+  --luz: rgba(255, 205, 120, 0.26);
+  --gab-a: #a3abb2;
+  --gab-b: #666e75;
+  --gab-c: #2c3237;
+  --gab-borda: rgba(255, 255, 255, 0.2);
+  --placa: rgba(235, 242, 248, 0.32);
+  --led: #4aa8ff;
+  --movel-a: #2e3339;
+  --movel-b: #14171a;
+  --tampo: #3f464d;
+  --obj-a: #414951;
+  --obj-b: #1a1e22;
+  --quadro: linear-gradient(150deg, #3a4757 0%, #1b232c 100%);
+}
+
+/* ---------------- parede e piso ---------------- */
+
+.parede {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: linear-gradient(176deg, var(--parede-a) 0%, var(--parede-b) 86%);
+  transition: background 0.45s ease;
+}
+
+.parede::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 78% 62% at 50% 42%, transparent 34%, rgba(0, 0, 0, 0.5) 100%),
+    linear-gradient(180deg, transparent 52%, rgba(0, 0, 0, 0.42) 100%);
+}
+
+.parede-luz {
+  position: absolute;
+  left: 50%;
+  top: 44%;
+  width: 118vmax;
+  height: 84vmax;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(ellipse at center, var(--luz) 0%, transparent 58%);
+  transition: background 0.45s ease;
+}
+
+.parede-rodape {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 4px;
+  background: rgba(0, 0, 0, 0.55);
+}
+
+/* ---------------- palco escalado ---------------- */
+
+.cena {
+  position: relative;
+  width: 1060px;
+  height: 596px;
+  transform: scale(var(--scale));
+  transform-origin: center center;
+}
+
+.modo-set .cena {
+  width: 684px;
+  height: 526px;
+}
+
+.modo-set .movel,
+.modo-set .sala,
+.modo-set .tvset-lateral {
+  display: none;
+}
+
+/* ---------------- móvel e piso ---------------- */
+
+.movel {
+  position: absolute;
+  left: -1600px;
+  right: -1600px;
+  top: 550px;
+  height: 46px;
+}
+
+.movel::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 46px;
+  height: 1200px;
+  background: linear-gradient(180deg, var(--movel-b) 0%, #05070a 60%);
+}
+
+.movel-tampo {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 8px;
+  background: linear-gradient(180deg, var(--tampo) 0%, var(--movel-a) 100%);
+  box-shadow: 0 -1px 0 var(--gab-borda), 0 4px 14px rgba(0, 0, 0, 0.65);
+  transition: background 0.45s ease;
+}
+
+.movel-frente {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 8px;
+  bottom: 0;
+  background: linear-gradient(180deg, var(--movel-a) 0%, var(--movel-b) 100%);
+  transition: background 0.45s ease;
+}
+
+.movel-frente::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 1px;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.movel-frente::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 8px;
+  bottom: 7px;
+  width: 1180px;
+  transform: translateX(-50%);
+  border-left: 1px solid rgba(0, 0, 0, 0.34);
+  border-right: 1px solid rgba(0, 0, 0, 0.34);
+  box-shadow: inset 0 0 0 1px var(--gab-borda);
+  opacity: 0.5;
+}
+
+/* ---------------- o gabinete da televisão ---------------- */
+
+.tvset {
+  position: absolute;
+  left: 140px;
+  top: 0;
+  width: 780px;
+  height: 550px;
+}
+
+.modo-set .tvset {
+  left: 0;
+  width: 684px;
+  height: 526px;
+}
+
+.tvset-caixa {
+  position: absolute;
+  inset: 0;
+  border-radius: 18px 18px 7px 7px;
+  background: linear-gradient(158deg, var(--gab-a) 0%, var(--gab-b) 40%, var(--gab-c) 100%);
+  border: 1px solid var(--gab-borda);
+  box-shadow:
+    inset 0 1px 0 var(--gab-borda),
+    inset 0 -22px 34px rgba(0, 0, 0, 0.42),
+    0 40px 70px -10px rgba(0, 0, 0, 0.8),
+    0 4px 0 rgba(0, 0, 0, 0.55);
+  transition: background 0.45s ease, border-color 0.45s ease;
+}
+
+.tvset-vidro {
+  position: absolute;
+  left: 44px;
+  top: 30px;
+  width: 640px;
+  height: 480px;
+  border-radius: 26px;
+  overflow: hidden;
+  background: #000;
+  box-shadow:
+    0 0 0 3px rgba(0, 0, 0, 0.88),
+    0 0 0 5px var(--gab-borda),
+    inset 0 0 34px rgba(0, 0, 0, 0.9);
+}
+
+.modo-set .tvset-vidro {
+  left: 22px;
+  top: 16px;
+  border-radius: 18px;
+}
+
+/* --- frente: placa e led --- */
+
+.tvset-frente {
+  position: absolute;
+  left: 44px;
+  top: 514px;
+  width: 640px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 8px;
+}
+
+.modo-set .tvset-frente {
+  left: 22px;
+  top: 500px;
+  width: 640px;
+  height: 22px;
+}
+
+.tvset-placa {
+  width: 132px;
+  height: 9px;
+  border-radius: 2px;
+  background: repeating-linear-gradient(90deg, var(--placa) 0 2px, transparent 2px 5px);
+  opacity: 0.7;
+  transition: background 0.45s ease;
+}
+
+.tvset-led {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--led);
+  box-shadow: 0 0 12px var(--led), inset 0 0 3px rgba(0, 0, 0, 0.55);
+  transition: background 0.45s ease, box-shadow 0.45s ease;
+}
+
+/* --- coluna lateral: grade e knobs --- */
+
+.tvset-lateral {
+  position: absolute;
+  right: 10px;
+  top: 34px;
+  width: 76px;
+  height: 476px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding-top: 16px;
+}
+
+.tvset-grade {
+  width: 54px;
+  height: 300px;
+  border-radius: 4px;
+  background: repeating-linear-gradient(180deg, rgba(0, 0, 0, 0.55) 0 2px, transparent 2px 6px);
+  box-shadow: inset 0 0 14px rgba(0, 0, 0, 0.6), 0 1px 0 var(--gab-borda);
+}
+
+.tvset-knob {
+  position: relative;
+  border-radius: 50%;
+  background: radial-gradient(circle at 34% 28%, var(--gab-a) 0%, var(--gab-c) 92%);
+  border: 1px solid rgba(0, 0, 0, 0.55);
+  box-shadow: inset 0 1px 0 var(--gab-borda), 0 3px 7px rgba(0, 0, 0, 0.65);
+  transition: background 0.45s ease;
+}
+
+.tvset-knob::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 15%;
+  width: 2px;
+  height: 30%;
+  transform: translateX(-50%);
+  background: var(--placa);
+}
+
+.tvset-knob.grande {
+  width: 40px;
+  height: 40px;
+}
+
+.tvset-knob.pequeno {
+  width: 26px;
+  height: 26px;
+}
+
+/* --- a era 2000 tinha bezel liso, sem knob --- */
+
+.amb-anos2000 .tvset-knob,
+.amb-neutro .tvset-knob {
+  display: none;
+}
+
+.amb-anos2000 .tvset-grade,
+.amb-neutro .tvset-grade {
+  height: 420px;
+  background: repeating-linear-gradient(180deg, rgba(0, 0, 0, 0.4) 0 1px, transparent 1px 5px);
+}
+
+/* ---------------- objetos: ancorados nas bordas da TV ---------------- */
+
+.sala {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.sala-esq,
+.sala-dir {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 940px;
+}
+
+.sala-esq {
+  right: 920px;
+}
+
+.sala-dir {
+  left: 920px;
+}
+
+.obj {
+  position: absolute;
+  bottom: 46px;
+  animation: obj-entra 0.5s ease both;
+}
+
+.obj.na-parede {
+  bottom: auto;
+  top: 96px;
+}
+
+@keyframes obj-entra {
+  from {
+    opacity: 0;
+    transform: translateY(9px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.obj span {
+  position: absolute;
+  display: block;
+}
+
+.obj::after {
+  content: '';
+  position: absolute;
+  left: 6%;
+  right: 6%;
+  bottom: -5px;
+  height: 9px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.6) 0%, transparent 72%);
+}
+
+.obj.na-parede::after {
+  display: none;
+}
+
+/* --- quadro na parede --- */
+
+.quadro {
+  width: 92px;
+  height: 116px;
+  border: 5px solid var(--obj-b);
+  border-radius: 2px;
+  background: var(--quadro);
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.55), inset 0 0 0 1px rgba(0, 0, 0, 0.5);
+  transition: background 0.45s ease, border-color 0.45s ease;
+}
+
+.quadro::before {
+  content: '';
+  position: absolute;
+  left: 14%;
+  right: 14%;
+  top: 18%;
+  height: 34%;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.quadro::after {
+  content: '';
+  position: absolute;
+  left: 12%;
+  right: 12%;
+  bottom: 16%;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.16);
+}
+
+/* --- anos 70 --- */
+
+.antena {
+  right: 12px;
+  width: 96px;
+  height: 214px;
+}
+
+.antena-base {
+  left: 24px;
+  bottom: 0;
+  width: 52px;
+  height: 13px;
+  border-radius: 3px 3px 1px 1px;
+  background: linear-gradient(180deg, var(--obj-a), var(--obj-b));
+}
+
+.antena-haste {
+  bottom: 11px;
+  width: 3px;
+  height: 190px;
+  transform-origin: bottom center;
+  background: linear-gradient(180deg, rgba(232, 220, 196, 0.92), rgba(122, 112, 96, 0.6));
+}
+
+.antena-haste.esq {
+  left: 46px;
+  transform: rotate(-28deg);
+}
+
+.antena-haste.dir {
+  left: 50px;
+  transform: rotate(23deg);
+}
+
+.lampada {
+  right: 132px;
+  width: 100px;
+  height: 136px;
+}
+
+.lampada-cupula {
+  left: 10px;
+  top: 0;
+  width: 80px;
+  height: 48px;
+  clip-path: polygon(17% 0, 83% 0, 100% 100%, 0 100%);
+  background: linear-gradient(180deg, #e09240 0%, #a2571c 100%);
+  box-shadow: 0 10px 40px rgba(232, 152, 68, 0.4);
+}
+
+.lampada-haste {
+  left: 48px;
+  top: 48px;
+  width: 5px;
+  height: 78px;
+  background: linear-gradient(90deg, var(--obj-b), var(--obj-a), var(--obj-b));
+}
+
+.lampada-pe {
+  left: 28px;
+  bottom: 0;
+  width: 46px;
+  height: 10px;
+  border-radius: 3px;
+  background: linear-gradient(180deg, var(--obj-a), var(--obj-b));
+}
+
+.console-atari {
+  left: 14px;
+  width: 132px;
+  height: 66px;
+}
+
+.atari-corpo {
+  left: 0;
+  bottom: 0;
+  width: 94px;
+  height: 32px;
+  border-radius: 3px;
+  background: linear-gradient(180deg, #2d2823 0%, #15110e 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.atari-madeira {
+  left: 4px;
+  top: 4px;
+  width: 86px;
+  height: 11px;
+  border-radius: 1px;
+  background: repeating-linear-gradient(90deg, #96602f 0 3px, #714722 3px 6px);
+}
+
+.atari-chaves {
+  left: 9px;
+  bottom: 6px;
+  width: 62px;
+  height: 5px;
+  background: repeating-linear-gradient(90deg, rgba(226, 216, 196, 0.75) 0 6px, transparent 6px 12px);
+}
+
+.atari-joystick {
+  right: 0;
+  bottom: 0;
+  width: 32px;
+  height: 48px;
+}
+
+.atari-joystick::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 32px;
+  height: 21px;
+  border-radius: 3px;
+  background: linear-gradient(180deg, #2a2523 0%, #0f0d0c 100%);
+}
+
+.joy-manete {
+  left: 14px;
+  bottom: 19px;
+  width: 4px;
+  height: 23px;
+  background: #1b1918;
+  border-radius: 2px;
+}
+
+.joy-manete::after {
+  content: '';
+  position: absolute;
+  left: -5px;
+  top: -8px;
+  width: 15px;
+  height: 11px;
+  border-radius: 50% 50% 40% 40%;
+  background: linear-gradient(180deg, #d0332b, #7f1a15);
+}
+
+.cartuchos {
+  left: 152px;
+  width: 48px;
+  height: 44px;
+}
+
+.cartuchos span {
+  left: 0;
+  width: 44px;
+  height: 10px;
+  border-radius: 1px;
+  background: linear-gradient(180deg, #3f362c 0%, #1e1913 100%);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+.cartuchos span:nth-child(1) {
+  bottom: 0;
+}
+.cartuchos span:nth-child(2) {
+  bottom: 11px;
+  left: 3px;
+}
+.cartuchos span:nth-child(3) {
+  bottom: 22px;
+  left: 1px;
+}
+
+/* --- anos 90 --- */
+
+.console-ps1 {
+  left: 12px;
+  width: 130px;
+  height: 70px;
+}
+
+.ps1-corpo {
+  left: 0;
+  bottom: 24px;
+  width: 98px;
+  height: 27px;
+  border-radius: 4px;
+  background: linear-gradient(180deg, #d6d2c4 0%, #a09c8f 62%, #6f6c62 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45);
+}
+
+.ps1-tampa {
+  left: 15px;
+  top: 4px;
+  width: 46px;
+  height: 16px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #bcb8ab 0%, #8d897b 100%);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.32);
+}
+
+.ps1-botoes {
+  right: 8px;
+  top: 10px;
+  width: 21px;
+  height: 4px;
+  background: repeating-linear-gradient(90deg, rgba(68, 66, 60, 0.85) 0 4px, transparent 4px 8px);
+}
+
+.ps1-controle,
+.ps2-controle,
+.controle-solto {
+  width: 56px;
+  height: 21px;
+}
+
+.ps1-controle {
+  right: 0;
+  bottom: 0;
+}
+
+.ps1-controle::before,
+.ps2-controle::before,
+.controle-solto::before {
+  content: '';
+  position: absolute;
+  left: 10px;
+  top: 0;
+  width: 36px;
+  height: 11px;
+  border-radius: 5px 5px 3px 3px;
+  background: linear-gradient(180deg, var(--ctrl-a, #d6d2c4) 0%, var(--ctrl-b, #8d897b) 100%);
+}
+
+.ctrl-punho {
+  bottom: 0;
+  width: 14px;
+  height: 16px;
+  border-radius: 4px 4px 7px 7px;
+  background: linear-gradient(180deg, var(--ctrl-a, #cbc7ba) 0%, var(--ctrl-b, #7f7c72) 100%);
+}
+
+.ctrl-punho.esq {
+  left: 6px;
+  transform: rotate(-8deg);
+}
+
+.ctrl-punho.dir {
+  right: 6px;
+  transform: rotate(8deg);
+}
+
+.ps1-cabo {
+  right: 24px;
+  bottom: 17px;
+  width: 46px;
+  height: 13px;
+  border: 2px solid rgba(198, 194, 182, 0.5);
+  border-top: none;
+  border-radius: 0 0 13px 13px;
+}
+
+.fitas {
+  right: 16px;
+  width: 94px;
+  height: 78px;
+}
+
+.fitas span {
+  left: 0;
+  width: 88px;
+  height: 16px;
+  border-radius: 2px;
+  background: linear-gradient(180deg, #333029 0%, #171512 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.fitas span::after {
+  content: '';
+  position: absolute;
+  left: 8px;
+  top: 4px;
+  width: 54px;
+  height: 7px;
+  background: rgba(230, 226, 212, 0.75);
+}
+
+.fitas span:nth-child(1) {
+  bottom: 0;
+}
+.fitas span:nth-child(2) {
+  bottom: 17px;
+  left: 3px;
+}
+.fitas span:nth-child(3) {
+  bottom: 34px;
+  left: 1px;
+}
+.fitas span:nth-child(4) {
+  bottom: 51px;
+  left: 4px;
+}
+
+.caixas-jewel {
+  right: 124px;
+  width: 26px;
+  height: 88px;
+}
+
+.caixas-jewel span {
+  left: 0;
+  width: 22px;
+  height: 16px;
+  background: linear-gradient(90deg, rgba(210, 218, 224, 0.5) 0%, rgba(122, 134, 144, 0.4) 100%);
+  border: 1px solid rgba(228, 236, 242, 0.3);
+}
+
+.caixas-jewel span:nth-child(1) {
+  bottom: 0;
+}
+.caixas-jewel span:nth-child(2) {
+  bottom: 17px;
+}
+.caixas-jewel span:nth-child(3) {
+  bottom: 34px;
+}
+.caixas-jewel span:nth-child(4) {
+  bottom: 51px;
+}
+.caixas-jewel span:nth-child(5) {
+  bottom: 68px;
+}
+
+/* --- anos 2000 --- */
+
+.console-ps2 {
+  left: 12px;
+  width: 122px;
+  height: 64px;
+  --ctrl-a: #4d545b;
+  --ctrl-b: #23272b;
+}
+
+.ps2-corpo {
+  left: 0;
+  bottom: 24px;
+  width: 94px;
+  height: 21px;
+  border-radius: 3px;
+  background: linear-gradient(180deg, #474d54 0%, #21252a 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16);
+}
+
+.ps2-bandeja {
+  left: 6px;
+  top: 13px;
+  width: 80px;
+  height: 3px;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.ps2-led {
+  right: 7px;
+  top: 7px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #4aa8ff;
+  box-shadow: 0 0 9px #4aa8ff;
+}
+
+.ps2-controle {
+  right: 0;
+  bottom: 0;
+}
+
+.lombadas {
+  right: 14px;
+  width: 108px;
+  height: 100px;
+}
+
+.lombadas span {
+  bottom: 0;
+  width: 16px;
+  height: 96px;
+  border-radius: 1px 1px 0 0;
+  box-shadow: 1px 0 3px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.14);
+}
+
+.lombadas span:nth-child(1) {
+  left: 0;
+  background: linear-gradient(180deg, #33527a, #16233a);
+}
+.lombadas span:nth-child(2) {
+  left: 17px;
+  height: 91px;
+  background: linear-gradient(180deg, #75333f, #351620);
+}
+.lombadas span:nth-child(3) {
+  left: 34px;
+  background: linear-gradient(180deg, #44643d, #1d2b1a);
+}
+.lombadas span:nth-child(4) {
+  left: 51px;
+  height: 93px;
+  background: linear-gradient(180deg, #655b36, #2b2716);
+}
+.lombadas span:nth-child(5) {
+  left: 68px;
+  background: linear-gradient(180deg, #40444f, #1b1d22);
+}
+.lombadas span:nth-child(6) {
+  left: 85px;
+  height: 89px;
+  background: linear-gradient(180deg, #5c3d64, #27192c);
+}
+
+.caixa-som {
+  right: 132px;
+  width: 36px;
+  height: 112px;
+}
+
+.caixa-som::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 2px;
+  background: linear-gradient(160deg, var(--obj-a) 0%, var(--obj-b) 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+.som-cone {
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 32%, #434a51 0%, #0c0f11 88%);
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.85);
+}
+
+.som-cone.grande {
+  bottom: 16px;
+  width: 26px;
+  height: 26px;
+}
+
+.som-cone.pequeno {
+  top: 13px;
+  width: 15px;
+  height: 15px;
+}
+
+/* --- neutro --- */
+
+.controle-solto {
+  left: 20px;
+  --ctrl-a: #444b52;
+  --ctrl-b: #1d2126;
+}
+
+.caneca {
+  left: 104px;
+  width: 36px;
+  height: 46px;
+}
+
+.caneca-corpo {
+  left: 0;
+  bottom: 0;
+  width: 25px;
+  height: 27px;
+  border-radius: 2px 2px 4px 4px;
+  background: linear-gradient(180deg, #dee3e7 0%, #909aa0 100%);
+}
+
+.caneca-asa {
+  left: 23px;
+  bottom: 8px;
+  width: 11px;
+  height: 13px;
+  border: 2px solid #b6bdc2;
+  border-left: none;
+  border-radius: 0 8px 8px 0;
+}
+
+.caneca-vapor {
+  left: 6px;
+  bottom: 29px;
+  width: 13px;
+  height: 15px;
+  border-left: 2px solid rgba(220, 232, 240, 0.24);
+  border-radius: 60% 0 0 0;
+}
+
+.lombadas.neutras {
+  right: 18px;
+  width: 74px;
+}
+
+.lombadas.neutras span:nth-child(1) {
+  background: linear-gradient(180deg, #303840, #14181b);
+}
+.lombadas.neutras span:nth-child(2) {
+  background: linear-gradient(180deg, #3a424a, #191d20);
+}
+.lombadas.neutras span:nth-child(3) {
+  background: linear-gradient(180deg, #2a3138, #111417);
+}
+.lombadas.neutras span:nth-child(4) {
+  background: linear-gradient(180deg, #353d47, #171b1f);
+}
+
+/* ---------------- a sala com a TV apagada ---------------- */
+
+/* nada de conteúdo no vidro: a tela fica escura de verdade, e a
+   lâmpada do console é o único convite */
+
+/* a TV apagada não desenha varredura nem cintilação, e o vidro recebe um
+   escuro de vidro morto em vez de transparência: a foto do Atari tem a
+   televisão ligada com um jogo na tela, e a transparência deixaria ele à mostra */
+
+.viewport.apagada .tela {
+  background: linear-gradient(172deg, #0d0f11 0%, #070809 58%, #0b0d0f 100%);
+  box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.6);
+}
+
+.viewport.apagada .stage {
+  background: transparent;
+}
+
+.viewport.apagada .tela-brilho {
+  opacity: 0.45;
+  box-shadow: none;
+}
+
+.ligar {
+  position: absolute;
+  z-index: 40;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  animation: fadeIn 0.9s 0.5s both;
+}
+
+.ligar-luz {
+  position: absolute;
+  inset: -26%;
+  background: radial-gradient(
+    ellipse 62% 58% at 50% 50%,
+    rgba(226, 246, 255, 0.6) 0%,
+    rgba(170, 216, 246, 0.26) 38%,
+    rgba(120, 180, 220, 0.08) 62%,
+    transparent 80%
+  );
+  mix-blend-mode: screen;
+  animation: ligar-pulso 2.2s ease-in-out infinite;
+}
+
+@keyframes ligar-pulso {
+  0%,
+  100% {
+    opacity: 0.34;
+    transform: scale(0.94);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+.ligar:hover .ligar-luz,
+.ligar:focus-visible .ligar-luz {
+  animation: none;
+  opacity: 1;
+  transform: scale(1.08);
+}
+
+/* pega o clique que cai fora do console e revela a dica */
+
+.ligar-fora {
+  position: absolute;
+  inset: 0;
+  z-index: 38;
+}
+
+/* a dica só entra depois de 10 s de espera ou de um clique no lugar errado,
+   e fica ancorada acima do console, com a seta apontando para ele */
+
+.ligar-dica {
+  position: absolute;
+  z-index: 41;
+  transform: translate(-50%, -100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  animation: ligar-entra 0.5s cubic-bezier(0.2, 0.8, 0.25, 1) both;
+}
+
+@keyframes ligar-entra {
+  from {
+    opacity: 0;
+    transform: translate(-50%, calc(-100% + 12px));
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -100%);
+  }
+}
+
+.ligar-dica p {
+  padding: 10px 20px 11px;
+  border-radius: 6px;
+  white-space: nowrap;
+  text-align: center;
+  font-family: 'Saira', sans-serif;
+  font-size: 13px;
+  font-weight: 300;
+  letter-spacing: 0.6px;
+  color: #eef6fc;
+  background: rgba(10, 16, 22, 0.86);
+  border: 1px solid rgba(200, 228, 245, 0.26);
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(3px);
+}
+
+.ligar-dica b {
+  font-weight: 500;
+  margin-left: 5px;
+  color: #fff;
+}
+
+.ligar-seta {
+  position: relative;
+  width: 2px;
+  height: 22px;
+  margin-top: -1px;
+  background: linear-gradient(180deg, rgba(200, 228, 245, 0.5), rgba(200, 228, 245, 0.9));
+  animation: ligar-seta 1.5s ease-in-out infinite;
+}
+
+.ligar-seta::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -1px;
+  width: 0;
+  height: 0;
+  transform: translateX(-50%);
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 8px solid rgba(200, 228, 245, 0.9);
+}
+
+@keyframes ligar-seta {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateY(4px);
+    opacity: 1;
+  }
+}
+
+.ligar-reserva {
+  position: absolute;
+  left: 50%;
+  bottom: 40px;
+  transform: translateX(-50%);
+  z-index: 40;
+  padding: 11px 22px;
+  font-family: 'Saira', sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(232, 244, 252, 0.8);
+  border: 1px solid rgba(210, 232, 248, 0.3);
+  background: rgba(8, 14, 20, 0.7);
+  cursor: pointer;
+}
+
+/* ---------------- a televisão acendendo ----------------
+   entre o clique no console e a abertura: o vidro ganha vida antes
+   do vídeo entrar. tubo colapsa numa linha e abre; painel plano
+   sobe com fade e um estouro de brilho.                          */
+
+.viewport.acendendo .tela {
+  background: #000;
+  overflow: hidden;
+}
+
+.viewport.acendendo .stage {
+  background: #000;
+}
+
+.viewport.acendendo .tela-brilho {
+  opacity: 1;
+}
+
+.acende-luz {
+  position: absolute;
+  inset: 0;
+  z-index: 12;
+  pointer-events: none;
+}
+
+/* --- tubo: Atari, PS1, PS2 --- */
+
+.viewport.acendendo.amb-anos70 .acende-luz,
+.viewport.acendendo.amb-anos90 .acende-luz,
+.viewport.acendendo.amb-anos2000 .acende-luz {
+  background: radial-gradient(
+    ellipse 78% 54% at 50% 50%,
+    rgba(226, 246, 255, 0.95) 0%,
+    rgba(170, 216, 246, 0.4) 44%,
+    transparent 76%
+  );
+  animation: acende-tubo 1s cubic-bezier(0.16, 0.9, 0.25, 1) both;
+}
+
+@keyframes acende-tubo {
+  0% {
+    opacity: 0;
+    transform: scale(1.3, 0.004);
+  }
+  8% {
+    opacity: 1;
+    transform: scale(1.3, 0.004);
+  }
+  26% {
+    opacity: 1;
+    transform: scale(1.12, 0.02);
+  }
+  52% {
+    opacity: 0.9;
+    transform: scale(1, 0.42);
+  }
+  74% {
+    opacity: 0.6;
+    transform: scale(1, 1.04);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1, 1);
+  }
+}
+
+/* --- painel plano: PS3 --- */
+
+.viewport.acendendo.amb-neutro .acende-luz {
+  background: radial-gradient(
+    ellipse 80% 60% at 50% 50%,
+    rgba(214, 238, 252, 0.7) 0%,
+    rgba(140, 190, 225, 0.22) 48%,
+    transparent 78%
+  );
+  animation: acende-plano 0.7s ease-out both;
+}
+
+@keyframes acende-plano {
+  0% {
+    opacity: 0;
+    transform: scale(1.02);
+  }
+  22% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+}

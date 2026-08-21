@@ -1,0 +1,538 @@
+/* ---------------- Atari 2600 ---------------- */
+
+.atari {
+  --branco: #e8e8e8;
+  --laranja: #d4832c;
+  --vermelho: #d0463a;
+  --amarelo: #cfc23a;
+  --verde: #4f9e46;
+  --azul: #4a7ad4;
+  --cinza: #6a6a6a;
+
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: #000;
+  color: var(--branco);
+  font-family: 'Silkscreen', monospace;
+}
+
+/* --- ligar --- */
+
+.at-desligado {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.at-led {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--vermelho);
+  box-shadow: 0 0 12px 3px rgba(208, 70, 58, 0.6);
+  animation: pulse 2.6s ease-in-out infinite;
+}
+
+.at-desligado p {
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: #9a9a9a;
+}
+
+.at-desligado .at-sub {
+  font-size: 8px;
+  letter-spacing: 1px;
+  color: #454545;
+}
+
+/* --- menu --- */
+
+.at-menu {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 54px;
+}
+
+.at-menu h1 {
+  font-size: 30px;
+  font-weight: 400;
+  letter-spacing: 6px;
+  color: var(--laranja);
+  text-align: center;
+  line-height: 1.35;
+}
+
+.at-menu h1 span {
+  display: block;
+  color: var(--branco);
+}
+
+.at-menu-sub {
+  margin-top: 14px;
+  font-size: 8px;
+  letter-spacing: 3px;
+  color: var(--cinza);
+}
+
+.at-menu ul {
+  margin-top: 54px;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.at-menu li {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 13px;
+  letter-spacing: 4px;
+  color: #7d7d7d;
+  cursor: pointer;
+}
+
+.at-menu li i {
+  width: 12px;
+  height: 12px;
+  background: transparent;
+}
+
+.at-menu li.on {
+  color: var(--amarelo);
+}
+
+.at-menu li.on i {
+  background: var(--vermelho);
+}
+
+.at-menu-pe {
+  position: absolute;
+  bottom: 22px;
+  font-size: 8px;
+  letter-spacing: 2px;
+  color: #3d3d3d;
+}
+
+/* --- jogo --- */
+
+.at-jogo {
+  position: absolute;
+  inset: 0;
+}
+
+.at-tela {
+  display: block;
+  width: 640px;
+  height: 480px;
+  image-rendering: pixelated;
+}
+
+.at-hud {
+  position: absolute;
+  top: 10px;
+  left: 18px;
+  right: 18px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 14px;
+  letter-spacing: 3px;
+  color: var(--branco);
+}
+
+.at-linhas,
+.at-vidas {
+  display: flex;
+  gap: 5px;
+}
+
+.at-linhas i {
+  width: 12px;
+  height: 6px;
+  background: #333;
+}
+
+.at-linhas i.on {
+  background: var(--verde);
+}
+
+.at-vidas i {
+  width: 8px;
+  height: 8px;
+  background: var(--vermelho);
+}
+
+.at-aviso {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 74px;
+  z-index: 2;
+  text-align: center;
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: var(--amarelo);
+}
+
+.at-cartao {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 3;
+  width: 400px;
+  transform: translate(-50%, -50%);
+  padding: 22px 24px 18px;
+  text-align: center;
+  background: #000;
+  border: 3px solid var(--laranja);
+  box-shadow: 0 0 0 3px #000, 0 12px 40px rgba(0, 0, 0, 0.9);
+}
+
+.at-cartao-topo {
+  font-size: 8px;
+  letter-spacing: 3px;
+  color: var(--cinza);
+}
+
+.at-cartao h3 {
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  line-height: 1.4;
+  color: var(--amarelo);
+}
+
+.at-cartao h3.at-fim {
+  color: var(--vermelho);
+}
+
+.at-cartao h3.at-venceu {
+  color: var(--verde);
+}
+
+.at-cartao-sub {
+  margin-top: 10px;
+  font-size: 9px;
+  line-height: 1.8;
+  letter-spacing: 1px;
+  color: #b4b4b4;
+}
+
+.at-cartao-premio {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 2px solid #2a2a2a;
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: var(--verde);
+}
+
+.at-cartao-seguir {
+  margin-top: 16px;
+  font-size: 8px;
+  letter-spacing: 3px;
+  color: var(--laranja);
+}
+
+.at-aviso-inicial {
+  width: 456px;
+  text-align: left;
+}
+
+.at-aviso-inicial .at-cartao-topo,
+.at-aviso-inicial h3,
+.at-aviso-inicial .at-cartao-seguir {
+  text-align: center;
+}
+
+.at-aviso-inicial ul {
+  margin-top: 18px;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+
+.at-aviso-inicial li {
+  position: relative;
+  padding-left: 18px;
+  font-size: 9px;
+  line-height: 1.75;
+  color: #c0c0c0;
+}
+
+.at-aviso-inicial li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 5px;
+  width: 8px;
+  height: 6px;
+  background: var(--laranja);
+}
+
+.at-aviso-inicial b {
+  font-weight: 400;
+  color: var(--amarelo);
+}
+
+.at-rodape {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 8px;
+  z-index: 2;
+  text-align: center;
+  font-size: 7.5px;
+  letter-spacing: 2px;
+  color: #3d3d3d;
+}
+
+/* --- currículo --- */
+
+.at-cur {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 26px 30px 16px;
+}
+
+.at-cur-topo {
+  flex: none;
+  padding-bottom: 12px;
+  border-bottom: 3px solid currentColor;
+}
+
+.at-cur-topo.branco {
+  color: var(--branco);
+}
+.at-cur-topo.laranja {
+  color: var(--laranja);
+}
+.at-cur-topo.verde {
+  color: var(--verde);
+}
+.at-cur-topo.azul {
+  color: var(--azul);
+}
+.at-cur-topo.amarelo {
+  color: var(--amarelo);
+}
+
+.at-cur-topo h2 {
+  font-size: 17px;
+  font-weight: 400;
+  letter-spacing: 3px;
+  line-height: 1.3;
+}
+
+.at-cur-topo p {
+  margin-top: 7px;
+  font-size: 8.5px;
+  letter-spacing: 1px;
+  color: var(--cinza);
+}
+
+.at-cur-corpo {
+  flex: 1;
+  min-height: 0;
+  padding-top: 16px;
+  overflow: hidden;
+}
+
+.at-cur-texto {
+  font-size: 9.5px;
+  line-height: 2;
+  color: #c8c8c8;
+}
+
+.at-cur-itens {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.at-cur-itens li {
+  position: relative;
+  padding-left: 18px;
+  font-size: 9.5px;
+  line-height: 1.6;
+  color: #c8c8c8;
+}
+
+.at-cur-itens li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 5px;
+  width: 8px;
+  height: 8px;
+  background: var(--laranja);
+}
+
+.at-cur-grade {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 20px;
+}
+
+.at-cur-grade li {
+  font-size: 9px;
+  letter-spacing: 1px;
+  color: #c8c8c8;
+}
+
+.at-cur-linhas {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.at-cur-linhas li {
+  display: flex;
+  gap: 14px;
+  font-size: 9.5px;
+}
+
+.at-cur-linhas b {
+  width: 84px;
+  flex: none;
+  font-weight: 400;
+  letter-spacing: 2px;
+  color: var(--cinza);
+}
+
+.at-cur-linhas span {
+  color: #d4d4d4;
+}
+
+.at-cur-marca {
+  margin-top: 18px;
+  padding-top: 12px;
+  border-top: 2px solid #262626;
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+
+.at-cur-marca.laranja {
+  color: var(--laranja);
+}
+.at-cur-marca.verde {
+  color: var(--verde);
+}
+
+.at-cur-acao {
+  margin-top: 20px;
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: var(--amarelo);
+}
+
+.at-cur-pe {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 12px;
+  font-size: 7.5px;
+  letter-spacing: 2px;
+  color: #3d3d3d;
+}
+
+.at-cur-pontos {
+  display: flex;
+  gap: 5px;
+}
+
+.at-cur-pontos i {
+  width: 10px;
+  height: 5px;
+  background: #2c2c2c;
+}
+
+.at-cur-pontos i.on {
+  background: var(--laranja);
+}
+
+/* --- consoles --- */
+
+.at-consoles {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 54px;
+}
+
+.at-consoles h2 {
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 5px;
+  color: var(--laranja);
+}
+
+.at-consoles ul {
+  margin-top: 40px;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 400px;
+}
+
+.at-consoles li {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  padding: 7px 12px;
+  cursor: pointer;
+  color: #8a8a8a;
+}
+
+.at-consoles li.on {
+  color: var(--amarelo);
+  background: #1e1e1e;
+}
+
+.at-consoles li.off {
+  color: #3f3f3f;
+}
+
+.at-consoles li b {
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 2px;
+}
+
+.at-consoles li em {
+  margin-left: auto;
+  font-style: normal;
+  font-size: 8px;
+  letter-spacing: 1px;
+}
+
+.at-consoles-msg {
+  position: absolute;
+  bottom: 26px;
+  font-size: 8px;
+  letter-spacing: 2px;
+  color: var(--cinza);
+}

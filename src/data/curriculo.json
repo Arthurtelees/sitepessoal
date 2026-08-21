@@ -1,0 +1,352 @@
+{
+  "nome": "Arthur Teles",
+  "cargo": "Desenvolvedor Full Stack",
+  "local": "Brasília — DF",
+  "carreiraInicio": "2024-02-01",
+  "pdf": "arthur_teles_curriculo.pdf",
+
+  "contato": {
+    "telefone": "+55 (61) 98421-2571",
+    "email": "arthurnunesteles@gmail.com",
+    "linkedin": "https://linkedin.com/in/arthur-teles-179145202",
+    "github": "https://github.com/Arthurtelees",
+    "site": "https://arthur-teles.vercel.app/"
+  },
+
+  "resumo": "Desenvolvedor Full Stack com experiência em sistemas corporativos, e-commerce de alta performance e automações de impacto real. Atua do backend ao frontend — Java, Python, React e Next.js — com histórico de entregas em ambientes ágeis, integrações complexas e decisões arquiteturais que reduzem fricção operacional e escalam com o produto.",
+
+  "idiomas": [
+    { "nome": "PORTUGUÊS", "nivel": "NATIVO", "barra": 100, "status": "fine" },
+    { "nome": "INGLÊS", "nivel": "B2", "barra": 65, "status": "caution" }
+  ],
+
+  "experiencia": [
+    {
+      "id": "alldax",
+      "empresa": "Alldax",
+      "cargo": "Desenvolvedor Full Stack",
+      "periodo": "out 2025 — presente",
+      "atual": true,
+      "arquivo": {
+        "titulo": "RELATÓRIO DE OPERAÇÃO — ALLDAX",
+        "cabecalho": "Setor: Sistemas Corporativos  ·  Status: EM ANDAMENTO",
+        "paginas": [
+          "Desenvolvi sistemas corporativos e plataformas internas utilizados por múltiplas áreas de negócio, com Java (Spring Boot), Python e React/TypeScript.\n\nProjetei e implementei integrações, automações e fluxos de dados que reduziram atividades manuais e aumentaram a eficiência operacional em até 15%.",
+          "Contribuí para decisões arquiteturais, modelagem de dados e evolução de aplicações críticas, com foco em escalabilidade, confiabilidade e manutenção de longo prazo.\n\nAtuei em ambiente ágil (Scrum/XP), participando do ciclo completo de desenvolvimento, da definição técnica à entrega em produção."
+        ],
+        "destaque": "+15% de eficiência operacional"
+      },
+      "missao": {
+        "codinome": "SISTEMAS CORPORATIVOS",
+        "status": "andamento",
+        "objetivos": [
+          "Construir plataformas internas em Java (Spring Boot), Python e React/TypeScript",
+          "Automatizar integrações e fluxos de dados entre áreas de negócio",
+          "Sustentar decisões arquiteturais e modelagem de aplicações críticas",
+          "Entregar em ciclo ágil, da definição técnica à produção"
+        ],
+        "recompensa": "+15% de eficiência operacional"
+      }
+    },
+    {
+      "id": "classea",
+      "empresa": "Classe A — Soluções em Tecnologia",
+      "cargo": "Desenvolvedor Full Stack · Freelance",
+      "periodo": "mar 2025 — dez 2025",
+      "atual": false,
+      "arquivo": {
+        "titulo": "MEMORANDO — CLASSE A SOLUÇÕES",
+        "cabecalho": "Setor: E-commerce  ·  Status: ENTREGUE",
+        "paginas": [
+          "Reestruturei a plataforma de e-commerce utilizando Next.js, com foco em SEO, Server-Side Rendering e otimização de performance.\n\nDesenvolvi o módulo completo de pagamentos, integrando PayPal, boleto bancário e depósito, garantindo flexibilidade e confiabilidade no fluxo de compras.",
+          "Construí interfaces responsivas a partir de layouts no Figma utilizando Tailwind CSS, priorizando experiência do usuário, consistência visual e manutenção simplificada.\n\nImplementei autenticação com NextAuth, incluindo controle seguro de sessões, proteção de rotas e gerenciamento de acesso.",
+          "Gerenciei estados globais com React Context API e participei de decisões técnicas relacionadas à arquitetura e evolução da plataforma."
+        ],
+        "destaque": "Módulo de pagamentos ponta a ponta"
+      },
+      "missao": {
+        "codinome": "REESTRUTURAÇÃO DO E-COMMERCE",
+        "status": "completa",
+        "objetivos": [
+          "Reconstruir a plataforma em Next.js com SSR e foco em SEO",
+          "Entregar o módulo de pagamentos: PayPal, boleto e depósito",
+          "Implementar autenticação, sessões e proteção de rotas com NextAuth",
+          "Traduzir os layouts do Figma em interfaces responsivas com Tailwind"
+        ],
+        "recompensa": "Plataforma reconstruída ponta a ponta"
+      }
+    },
+    {
+      "id": "hmab",
+      "empresa": "Hospital Militar de Brasília (HMAB)",
+      "cargo": "Desenvolvedor Full Stack",
+      "periodo": "fev 2024 — fev 2025",
+      "atual": false,
+      "arquivo": {
+        "titulo": "PRONTUÁRIO — HMAB",
+        "cabecalho": "Setor: Administrativo e Clínico  ·  Acesso: RESTRITO",
+        "paginas": [
+          "Desenvolvi aplicações web em Python (Django) e React para áreas administrativas e clínicas em ambiente de alta criticidade.\n\nAutomatizei processos internos, reduzindo o tempo operacional em 43% e eliminando gargalos manuais recorrentes.",
+          "Integrei sistemas legados com rigorosos requisitos de conformidade, segurança e disponibilidade contínua.\n\nObservação do supervisor: o sistema anterior ainda roda em algum servidor esquecido no subsolo. Ninguém tem coragem de desligar."
+        ],
+        "destaque": "-43% de tempo operacional"
+      },
+      "missao": {
+        "codinome": "AUTOMAÇÃO EM ZONA CRÍTICA",
+        "status": "completa",
+        "objetivos": [
+          "Desenvolver aplicações em Python (Django) e React para áreas clínicas",
+          "Automatizar processos internos e eliminar gargalos manuais",
+          "Integrar sistemas legados sob conformidade e disponibilidade contínua"
+        ],
+        "recompensa": "-43% de tempo operacional"
+      }
+    }
+  ],
+
+  "formacao": [
+    {
+      "id": "ucb",
+      "curso": "Gestão de Tecnologia da Informação",
+      "instituicao": "Universidade Católica de Brasília",
+      "periodo": "2021 — 2024",
+      "arquivo": {
+        "titulo": "DIPLOMA — UCB",
+        "cabecalho": "Gestão de Tecnologia da Informação  ·  2021 — 2024",
+        "paginas": [
+          "Universidade Católica de Brasília.\n\nGraduação em Gestão de Tecnologia da Informação, concluída em 2024. Base em governança, processos e arquitetura de sistemas — o lado do problema que não aparece no stack trace."
+        ]
+      },
+      "missao": {
+        "codinome": "GRADUAÇÃO — UCB",
+        "status": "completa",
+        "objetivos": [
+          "Concluir Gestão de Tecnologia da Informação",
+          "Governança, processos e arquitetura de sistemas"
+        ],
+        "recompensa": "Diploma · 2024"
+      }
+    },
+    {
+      "id": "iguacu",
+      "curso": "Pós-graduação em Desenvolvimento Java",
+      "instituicao": "Faculdade Iguaçu",
+      "periodo": "2024 — 2025",
+      "arquivo": {
+        "titulo": "CERTIFICADO — FACULDADE IGUAÇU",
+        "cabecalho": "Pós-graduação em Desenvolvimento Java  ·  2024 — 2025",
+        "paginas": [
+          "Faculdade Iguaçu.\n\nEspecialização em Desenvolvimento Java: ecossistema Spring, persistência, APIs e boas práticas de projeto aplicadas a sistemas de produção."
+        ]
+      },
+      "missao": {
+        "codinome": "PÓS EM DESENVOLVIMENTO JAVA",
+        "status": "completa",
+        "objetivos": [
+          "Aprofundar o ecossistema Spring e persistência",
+          "APIs e boas práticas aplicadas a sistemas de produção"
+        ],
+        "recompensa": "Especialização · 2025"
+      }
+    }
+  ],
+
+  "itens": [
+    {
+      "id": "java",
+      "nome": "JAVA",
+      "tipo": "LINGUAGEM",
+      "icone": "chip",
+      "nivel": 90,
+      "desc": "Linguagem principal em sistemas corporativos. Pesada, confiável e sempre carregada. Usada na Alldax em plataformas internas de múltiplas áreas de negócio."
+    },
+    {
+      "id": "spring",
+      "nome": "SPRING BOOT",
+      "tipo": "FRAMEWORK",
+      "icone": "frasco",
+      "nivel": 86,
+      "desc": "Framework de back-end para a JVM. Sozinho não serve de muita coisa — precisa ser combinado com uma linguagem compatível."
+    },
+    {
+      "id": "python",
+      "nome": "PYTHON",
+      "tipo": "LINGUAGEM",
+      "icone": "chip",
+      "nivel": 88,
+      "desc": "Ferramenta versátil de back-end e automação. Django, FastAPI, PyAutoGUI e SeleniumBase. Responsável direto pelos 43% de tempo operacional eliminados no HMAB."
+    },
+    {
+      "id": "django",
+      "nome": "DJANGO",
+      "tipo": "FRAMEWORK",
+      "icone": "frasco",
+      "nivel": 80,
+      "desc": "Framework web em Python. Usado nas aplicações administrativas e clínicas do Hospital Militar de Brasília."
+    },
+    {
+      "id": "react",
+      "nome": "REACT",
+      "tipo": "FRONT-END",
+      "icone": "disco",
+      "nivel": 90,
+      "desc": "Biblioteca de interface. Componentes, estado e Context API. Presente em praticamente todas as entregas dos últimos dois anos."
+    },
+    {
+      "id": "next",
+      "nome": "NEXT.JS",
+      "tipo": "FRONT-END",
+      "icone": "disco",
+      "nivel": 85,
+      "desc": "Renderização no servidor e rotas. Base da reestruturação do e-commerce da Classe A, com ganho direto de SEO e performance."
+    },
+    {
+      "id": "typescript",
+      "nome": "TYPESCRIPT",
+      "tipo": "LINGUAGEM",
+      "icone": "chip",
+      "nivel": 82,
+      "desc": "JavaScript com tipos. Reduz a chance de encontrar um undefined no corredor escuro."
+    },
+    {
+      "id": "tailwind",
+      "nome": "TAILWIND CSS",
+      "tipo": "FRONT-END",
+      "icone": "disco",
+      "nivel": 84,
+      "desc": "Estilização utilitária. Interfaces responsivas construídas a partir de layouts do Figma, com consistência visual e manutenção simplificada."
+    },
+    {
+      "id": "postgres",
+      "nome": "POSTGRESQL",
+      "tipo": "CHAVE",
+      "icone": "chave",
+      "nivel": 78,
+      "desc": "Chave de acesso relacional. Abre praticamente tudo. Modelagem de dados para aplicações críticas."
+    },
+    {
+      "id": "mysql",
+      "nome": "MYSQL",
+      "tipo": "CHAVE",
+      "icone": "chave",
+      "nivel": 72,
+      "desc": "Chave de acesso relacional. Comum em sistemas legados — e legado foi grande parte do trabalho no HMAB."
+    },
+    {
+      "id": "sqlite",
+      "nome": "SQLITE",
+      "tipo": "CHAVE",
+      "icone": "chave",
+      "nivel": 66,
+      "desc": "Chave pequena, leve, sem servidor. Perfeita para protótipos e ferramentas locais."
+    },
+    {
+      "id": "docker",
+      "nome": "DOCKER",
+      "tipo": "FERRAMENTA",
+      "icone": "engrenagem",
+      "nivel": 72,
+      "desc": "Empacota o ambiente inteiro. Elimina a frase \"na minha máquina funciona\" do vocabulário da equipe."
+    },
+    {
+      "id": "git",
+      "nome": "GIT",
+      "tipo": "FERRAMENTA",
+      "icone": "engrenagem",
+      "nivel": 88,
+      "desc": "Controle de versão. A única máquina de escrever que permite voltar no tempo depois de salvar."
+    },
+    {
+      "id": "selenium",
+      "nome": "SELENIUMBASE",
+      "tipo": "FERRAMENTA",
+      "icone": "engrenagem",
+      "nivel": 76,
+      "desc": "Automação de navegador. Combinada com uma linguagem de script, executa sozinha o que antes consumia horas de trabalho manual."
+    },
+    {
+      "id": "nextauth",
+      "nome": "NEXTAUTH",
+      "tipo": "FERRAMENTA",
+      "icone": "engrenagem",
+      "nivel": 74,
+      "desc": "Autenticação, sessões e proteção de rotas. Implementado no e-commerce da Classe A."
+    },
+    {
+      "id": "scrum",
+      "nome": "SCRUM / KANBAN / XP",
+      "tipo": "PRÁTICA",
+      "icone": "mapa",
+      "nivel": 82,
+      "desc": "Práticas ágeis. Ciclo completo de desenvolvimento, da definição técnica à entrega em produção."
+    }
+  ],
+
+  "combinacoes": [
+    {
+      "a": "java",
+      "b": "spring",
+      "nome": "STACK CORPORATIVA",
+      "desc": "Java + Spring Boot. A combinação que sustenta os sistemas internos da Alldax. Estável sob carga e sob auditoria."
+    },
+    {
+      "a": "react",
+      "b": "next",
+      "nome": "FRONT-END DE PRODUÇÃO",
+      "desc": "React + Next.js. SSR, SEO e performance. Foi assim que o e-commerce da Classe A foi reconstruído."
+    },
+    {
+      "a": "python",
+      "b": "selenium",
+      "nome": "MOTOR DE AUTOMAÇÃO",
+      "desc": "Python + SeleniumBase. Item de uso ilimitado. Reduziu o tempo operacional do HMAB em 43%."
+    },
+    {
+      "a": "python",
+      "b": "django",
+      "nome": "BACK-END CLÍNICO",
+      "desc": "Python + Django. As aplicações administrativas e clínicas do Hospital Militar de Brasília."
+    },
+    {
+      "a": "react",
+      "b": "tailwind",
+      "nome": "INTERFACE RESPONSIVA",
+      "desc": "React + Tailwind CSS. Do layout no Figma à tela entregue, sem perder consistência no caminho."
+    },
+    {
+      "a": "typescript",
+      "b": "react",
+      "nome": "FRONT-END TIPADO",
+      "desc": "TypeScript + React. Menos surpresas em tempo de execução, mais confiança no refactor."
+    }
+  ],
+
+  "mapa": {
+    "titulo": "BRASÍLIA — DF",
+    "salas": [
+      { "id": "alldax", "nome": "ALLDAX", "legenda": "Sistemas corporativos", "x": 250, "y": 40, "w": 130, "h": 78, "atual": true },
+      { "id": "classea", "nome": "CLASSE A", "legenda": "E-commerce", "x": 40, "y": 40, "w": 150, "h": 78, "atual": false },
+      { "id": "hmab", "nome": "HMAB", "legenda": "Hospital Militar", "x": 40, "y": 158, "w": 150, "h": 90, "atual": false },
+      { "id": "ucb", "nome": "UCB", "legenda": "Graduação em GTI", "x": 250, "y": 158, "w": 130, "h": 42, "atual": false },
+      { "id": "iguacu", "nome": "F. IGUAÇU", "legenda": "Pós em Java", "x": 250, "y": 206, "w": 130, "h": 42, "atual": false }
+    ],
+    "corredores": [
+      { "x": 190, "y": 74, "w": 60, "h": 10 },
+      { "x": 110, "y": 118, "w": 10, "h": 40 },
+      { "x": 190, "y": 190, "w": 60, "h": 10 },
+      { "x": 310, "y": 118, "w": 10, "h": 40 }
+    ]
+  },
+
+  "territorios": {
+    "titulo": "SAN ANDREAS",
+    "nota": "Territórios tomados fora do mapa: Brasília — DF.",
+    "zonas": [
+      { "id": "alldax", "nome": "ALLDAX", "legenda": "Sistemas corporativos", "x": 466, "y": 416, "w": 42, "h": 34, "atual": true },
+      { "id": "classea", "nome": "CLASSE A", "legenda": "E-commerce", "x": 372, "y": 416, "w": 42, "h": 34, "atual": false },
+      { "id": "hmab", "nome": "HMAB", "legenda": "Hospital Militar", "x": 419, "y": 416, "w": 42, "h": 34, "atual": false },
+      { "id": "ucb", "nome": "UCB", "legenda": "Graduação em GTI", "x": 396, "y": 456, "w": 42, "h": 34, "atual": false },
+      { "id": "iguacu", "nome": "F. IGUAÇU", "legenda": "Pós em Java", "x": 443, "y": 456, "w": 42, "h": 34, "atual": false }
+    ]
+  }
+}

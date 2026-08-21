@@ -1,0 +1,443 @@
+/* ---------------- PS3 · XrossMediaBar ----------------
+   medidas tiradas do print de referência (1032x577), reescaladas
+   para o palco widescreen de 890x480: barra em y=126, item
+   selecionado em y=223, passo de 36px na lista.               */
+
+.ps3 {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: #2a2a2a;
+  font-family: 'Saira', 'Segoe UI', sans-serif;
+  color: #eef4ec;
+}
+
+/* --- ligar --- */
+
+.ps3-power {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  background: #04070a;
+  cursor: pointer;
+}
+
+.ps3-power-led {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #d8352c;
+  box-shadow: 0 0 16px #d8352c;
+  animation: pulse 2.6s ease-in-out infinite;
+}
+
+.ps3-power p {
+  font-size: 12px;
+  font-weight: 300;
+  letter-spacing: 3px;
+  color: rgba(226, 238, 232, 0.8);
+}
+
+.ps3-power span {
+  font-size: 8.5px;
+  font-weight: 300;
+  letter-spacing: 2px;
+  color: rgba(180, 200, 190, 0.4);
+}
+
+/* --- a XMB --- */
+
+.xmb {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background:
+    linear-gradient(90deg, rgba(0, 0, 0, 0.46) 0%, rgba(0, 0, 0, 0.08) 26%, transparent 46%),
+    linear-gradient(180deg, #6e6e6e 0%, #5c5c5c 30%, #4b4b4b 58%, #545454 82%, #656565 100%);
+}
+
+.xmb-onda {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  filter: blur(0.5px);
+  pointer-events: none;
+}
+
+.xmb::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 128px;
+  height: 190px;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.075) 42%,
+    rgba(255, 255, 255, 0.045) 62%,
+    transparent 100%
+  );
+}
+
+.xmb-topo {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 10px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.xmb-sinal {
+  width: 16px;
+  height: 8px;
+  background: repeating-linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.75) 0 3px,
+    transparent 3px 5px
+  );
+}
+
+.xmb-hora {
+  font-size: 10px;
+  font-weight: 300;
+  letter-spacing: 0.6px;
+  color: rgba(250, 250, 250, 0.92);
+}
+
+/* --- barra horizontal de categorias --- */
+
+.xmb-barra {
+  position: absolute;
+  left: 0;
+  top: 126px;
+  height: 0;
+  transition: transform 0.34s cubic-bezier(0.22, 0.7, 0.2, 1);
+}
+
+.xmb-cat {
+  position: absolute;
+  top: 0;
+  width: 68px;
+  margin-left: -34px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  transform: translateY(-50%);
+  color: rgba(255, 255, 255, 0.4);
+  transition: color 0.28s ease, opacity 0.28s ease;
+}
+
+.xmb-cat em {
+  font-style: normal;
+  font-size: 8.5px;
+  font-weight: 300;
+  letter-spacing: 0.6px;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.28s ease;
+}
+
+.xmb-cat.on {
+  color: #fff;
+}
+
+.xmb-cat.on em {
+  opacity: 1;
+  color: rgba(252, 252, 252, 0.94);
+}
+
+.xmb-cat svg {
+  filter: drop-shadow(0 0 12px rgba(0, 0, 0, 0.45));
+  transition: width 0.28s ease, height 0.28s ease;
+}
+
+.xmb-cat.on svg {
+  filter: drop-shadow(0 0 16px rgba(255, 255, 255, 0.45));
+}
+
+/* --- coluna vertical de itens --- */
+
+.xmb-coluna {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  height: 100%;
+  pointer-events: none;
+}
+
+.xmb-item {
+  position: absolute;
+  left: 144px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  transform: translateY(-50%);
+  pointer-events: auto;
+  cursor: pointer;
+  transition: top 0.3s cubic-bezier(0.22, 0.7, 0.2, 1), opacity 0.3s ease;
+}
+
+.xmb-item-icone {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  color: rgba(255, 255, 255, 0.3);
+  transition: color 0.24s ease;
+}
+
+.xmb-item-txt b {
+  display: block;
+  font-size: 12px;
+  font-weight: 300;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+  color: rgba(255, 255, 255, 0.34);
+  transition: font-size 0.24s ease, color 0.24s ease;
+}
+
+.xmb-item-txt em {
+  display: block;
+  margin-top: 2px;
+  font-style: normal;
+  font-size: 8.5px;
+  font-weight: 300;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+  color: rgba(248, 248, 248, 0.8);
+  text-shadow: 0 0 12px rgba(0, 0, 0, 0.8), 0 1px 3px rgba(0, 0, 0, 0.7);
+}
+
+.xmb-item.on .xmb-item-icone {
+  color: #fff;
+}
+
+.xmb-item.on .xmb-item-txt b {
+  font-size: 17px;
+  font-weight: 300;
+  color: #fff;
+  text-shadow: 0 0 22px rgba(0, 0, 0, 0.62), 0 0 40px rgba(255, 255, 255, 0.24);
+}
+
+.xmb-selo {
+  display: inline-block;
+  margin-top: 4px;
+  padding: 1px 6px 2px;
+  font-size: 7px;
+  font-weight: 500;
+  letter-spacing: 1.4px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.92);
+  color: #2b2b2b;
+}
+
+.xmb-oculto {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* --- painel de conteúdo --- */
+
+.xmb-painel {
+  position: absolute;
+  inset: 0;
+  z-index: 30;
+  display: grid;
+  place-items: center;
+  padding: 40px 54px 56px;
+  background: rgba(14, 14, 14, 0.6);
+  backdrop-filter: blur(3px);
+  animation: fadeIn 0.2s ease;
+  cursor: pointer;
+}
+
+.xmb-painel-caixa {
+  width: 100%;
+  max-height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 24px 16px;
+  border-radius: 3px;
+  border: 1px solid rgba(240, 240, 240, 0.24);
+  background: linear-gradient(170deg, rgba(78, 78, 78, 0.96), rgba(38, 38, 38, 0.97));
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
+  cursor: default;
+  animation: xmb-abre 0.26s cubic-bezier(0.2, 0.8, 0.25, 1) both;
+}
+
+@keyframes xmb-abre {
+  from {
+    opacity: 0;
+    transform: translateX(26px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.xmb-painel-caixa header {
+  flex: none;
+  padding-bottom: 11px;
+  border-bottom: 1px solid rgba(240, 240, 240, 0.2);
+}
+
+.xmb-painel-caixa h2 {
+  font-size: 19px;
+  font-weight: 300;
+  letter-spacing: 0.4px;
+  color: #fbfefa;
+}
+
+.xmb-painel-caixa header p {
+  margin-top: 3px;
+  font-size: 9.5px;
+  font-weight: 300;
+  letter-spacing: 0.8px;
+  color: rgba(238, 238, 238, 0.62);
+}
+
+.xmb-barra-nivel {
+  flex: none;
+  height: 4px;
+  margin-top: 12px;
+  border-radius: 2px;
+  background: rgba(0, 0, 0, 0.32);
+}
+
+.xmb-barra-nivel span {
+  display: block;
+  height: 100%;
+  border-radius: 2px;
+  background: linear-gradient(90deg, rgba(240, 240, 240, 0.72), #fdfdfd);
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.45);
+}
+
+.xmb-painel-corpo {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  margin-top: 13px;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.xmb-painel-corpo p {
+  font-size: 10.5px;
+  font-weight: 300;
+  line-height: 1.62;
+  white-space: pre-line;
+  color: rgba(242, 242, 242, 0.84);
+}
+
+.xmb-painel-pe {
+  flex: none;
+  margin-top: 10px;
+  font-size: 8px;
+  font-weight: 300;
+  letter-spacing: 2px;
+  text-align: right;
+  color: rgba(238, 238, 238, 0.44);
+}
+
+.xmb-dica {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 12px;
+  text-align: center;
+  font-size: 8.5px;
+  font-weight: 300;
+  letter-spacing: 2px;
+  color: rgba(246, 246, 246, 0.36);
+}
+
+/* --- o sistema subindo: o vídeo de boot termina em cinza, então a XMB
+       entra dessaturada e clara e vai encontrando o verde, com os
+       elementos montando um a um                                     --- */
+
+.xmb.entrando {
+  animation: xmb-liga 1.65s cubic-bezier(0.32, 0.72, 0.24, 1) both;
+}
+
+@keyframes xmb-liga {
+  0% {
+    filter: brightness(1.62) contrast(0.84);
+  }
+  16% {
+    filter: brightness(1.46) contrast(0.88);
+  }
+  48% {
+    filter: brightness(1.2) contrast(0.95);
+  }
+  78% {
+    filter: brightness(1.06);
+  }
+  100% {
+    filter: brightness(1);
+  }
+}
+
+.xmb.entrando .xmb-onda {
+  animation: xmb-surge 1.1s ease-out both;
+}
+
+@keyframes xmb-surge {
+  0% {
+    opacity: 0.25;
+    transform: scaleY(1.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+
+.xmb.entrando .xmb-barra {
+  animation: xmb-monta 0.72s 0.42s both;
+}
+
+.xmb.entrando .xmb-coluna {
+  animation: xmb-monta 0.72s 0.66s both;
+}
+
+@keyframes xmb-monta {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.xmb.entrando .xmb-topo {
+  animation: xmb-monta 0.6s 1.05s both;
+}
+
+.xmb.entrando .xmb-dica {
+  animation: xmb-monta 0.6s 1.24s both;
+}
+
+.xmb.entrando::after {
+  opacity: 0;
+  animation: xmb-monta 0.9s 0.5s both;
+}
