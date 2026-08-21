@@ -125,6 +125,7 @@ export default function Intro({ videos, audioReady, pular = true, preencher = fa
     <div
       className="intro"
       onClick={precisaGesto ? iniciar : confirmando || !pular ? undefined : pedirParaPular}
+      onContextMenu={(e) => e.preventDefault()}
     >
       <video
         key={nome}
@@ -132,6 +133,9 @@ export default function Intro({ videos, audioReady, pular = true, preencher = fa
         className={`intro-video ${preencher ? 'preenche' : ''}`}
         playsInline
         preload="auto"
+        disablePictureInPicture
+        disableRemotePlayback
+        controlsList="nodownload nofullscreen noremoteplayback noplaybackrate"
         onLoadedMetadata={aoCarregarMetadado}
         onEnded={proximo}
         onError={proximo}
