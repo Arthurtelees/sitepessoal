@@ -19,7 +19,7 @@ export const CANAIS = [INICIO, ...CONSOLES]
 
 const TROCA_MS = 320
 
-export default function Canais({ canal, naInicio, onTrocar }) {
+export default function Canais({ canal, naInicio, onTrocar, teclado = true, apenasFaixa = false }) {
   const [trocando, setTrocando] = useState(false)
   const [surgiu, setSurgiu] = useState(false)
   const temporizador = useRef(null)
@@ -49,21 +49,24 @@ export default function Canais({ canal, naInicio, onTrocar }) {
   const c = CANAIS[i] || CANAIS[0]
   const mover = (d) => irPara((i + d + CANAIS.length) % CANAIS.length)
 
-  useInput({
-    left: naInicio ? undefined : () => mover(-1),
-    right: naInicio ? undefined : () => mover(1),
-    up: () => mover(-1),
-    down: () => mover(1),
-    prevTab: () => mover(-1),
-    nextTab: () => mover(1),
-  })
+  useInput(
+    {
+      left: naInicio ? undefined : () => mover(-1),
+      right: naInicio ? undefined : () => mover(1),
+      up: () => mover(-1),
+      down: () => mover(1),
+      prevTab: () => mover(-1),
+      nextTab: () => mover(1),
+    },
+    teclado,
+  )
 
   return (
     <div
       className={`canais epoca-${canal} ${trocando ? 'trocando' : ''} ${surgiu ? 'surgiu' : ''}`}
       style={{ '--cor': CORES[canal] || '#dfe8ef' }}
     >
-      {!naInicio && (
+      {!apenasFaixa && !naInicio && (
         <div className="canais-placa">
           <span className="canais-num">CH {String(i).padStart(2, '0')}</span>
           <b>{c.nome}</b>
@@ -73,7 +76,7 @@ export default function Canais({ canal, naInicio, onTrocar }) {
         </div>
       )}
 
-      {!naInicio && (
+      {(apenasFaixa || !naInicio) && (
         <ul className="canais-faixa">
           {CANAIS.map((x, k) => (
             <li key={x.id}>
@@ -89,11 +92,13 @@ export default function Canais({ canal, naInicio, onTrocar }) {
         </ul>
       )}
 
-      <p className="canais-dica">
-        {naInicio
-          ? '←→ escolhe · Enter abre · ↑↓ troca de canal'
-          : '↑↓ ←→ trocam de sala · clique no console para ligar'}
-      </p>
+      {!apenasFaixa && (
+        <p className="canais-dica">
+          {naInicio
+            ? '←→ escolhe · Enter abre · ↑↓ troca de canal'
+            : '↑↓ ←→ trocam de sala · clique no console para ligar'}
+        </p>
+      )}
     </div>
   )
 }

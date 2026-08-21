@@ -124,7 +124,8 @@ export default function App() {
   }
 
   const eraProps = { onSwitchEra: abrirEra, audioReady, onAudioReady }
-  const ambiente = fase === 'selecao' ? canal : era || 'inicio'
+  const emSelecao = fase === 'selecao'
+  const ambiente = emSelecao ? canal : era || 'inicio'
   const varredura = VARREDURA[ambiente] || 'crt-off'
 
   return (
@@ -141,9 +142,13 @@ export default function App() {
             : undefined
       }
       sobre={
-        fase === 'selecao' ? (
-          <Canais canal={canal} naInicio={canal === 'inicio'} onTrocar={trocarCanal} />
-        ) : null
+        <Canais
+          canal={emSelecao ? canal : ambiente}
+          naInicio={emSelecao && canal === 'inicio'}
+          onTrocar={emSelecao ? trocarCanal : abrirEra}
+          teclado={emSelecao}
+          apenasFaixa={!emSelecao}
+        />
       }
     >
       {fase === 'selecao' && canal === 'inicio' && (
